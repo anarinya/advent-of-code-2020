@@ -1,25 +1,12 @@
-import { txtToNumArray, sortLargeToSmallNums, sortSmallToLargeNums } from './utils';
+const fs = require('fs');
 
-type ArrayReference = {
-  value: number;
-  idx: number;
-};
+const sortLargeToSmallNums = (arr) => arr.sort((a, b) => b - a);
+const sortSmallToLargeNums = (arr) => arr.sort((a, b) => a - b);
 
-type ArrSumOutput = {
-  nums: [ArrayReference?];
-  multipliedSum: number | null;
-  debug: DebugInfo;
-}
-
-type DebugInfo = {
-  sumCheck: number | null;
-  countOfChecks: number;
-};
-
-function matchSum1(arr: number[], year: number): ArrSumOutput {
-  const sortedDataset1: number[] = sortLargeToSmallNums(arr);
-  const sortedDataset2: number[] = sortSmallToLargeNums(arr);
-  let output: ArrSumOutput = {
+const matchSum1 = (arr, year) => {
+  const sortedDataset1 = sortLargeToSmallNums(arr);
+  const sortedDataset2 = sortSmallToLargeNums(arr);
+  let output = {
     nums: [],
     multipliedSum: null,
     debug: {
@@ -43,11 +30,11 @@ function matchSum1(arr: number[], year: number): ArrSumOutput {
   return output;
 }
 
-function matchSum2(arr: number[], year: number): ArrSumOutput {
-  const sortedDataset1: number[] = sortLargeToSmallNums(arr);
-  const sortedDataset2: number[] = sortSmallToLargeNums(arr);
-  const datasetLength: number = sortedDataset1.length;
-  let output: ArrSumOutput = {
+const matchSum2 = (arr, year) => {
+  const sortedDataset1= sortLargeToSmallNums(arr);
+  const sortedDataset2 = sortSmallToLargeNums(arr);
+  const datasetLength= sortedDataset1.length;
+  let output = {
     nums: [],
     multipliedSum: null,
     debug: {
@@ -74,7 +61,7 @@ function matchSum2(arr: number[], year: number): ArrSumOutput {
   return output;
 }
 
-const data = txtToNumArray('./data/data1.txt');
+const data = fs.readFileSync('./data1.txt').toString().split('\n').map(n => Number(n));
 const summary1 = matchSum1(data, 2020);
 const summary2 = matchSum2(data, 2020);
 

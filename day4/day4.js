@@ -18,7 +18,7 @@ const reqFields = {
 }
 
 const data = fs
-  .readFileSync('./data/data4.txt')
+  .readFileSync('data4.txt')
   .toString()
   .split('\n\n')
   .map(record => record.split(/[\s]/).reduce((acc, pair) => {

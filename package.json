@@ -4,9 +4,7 @@
   "description": "advent of code challenges",
   "main": "aoc1.ts",
   "scripts": {
-    "day1": "ts-node aoc1.ts",
-    "day2": "ts-node aoc2.ts",
-    "day3": "ts-node aoc3.ts"
+
   },
   "keywords": [],
   "author": "",
