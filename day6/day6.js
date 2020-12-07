@@ -1,8 +1,6 @@
 const fs = require('fs');
 const file = (__dirname + '/data6.txt');
 
-const data = fs.readFileSync(file).toString().split('\n\n')
-
 // Per group, how many unique questions did anyone answer 'yes' to?
 // Add the total from each group together
 const anySum = (data) => {
@@ -24,10 +22,12 @@ const allSum = (data) => {
 
       const sum = Object.keys(counts)
         .reduce((acc, chr) => counts[chr] === group.length ? ++acc : acc, 0);
-        
+
       return acc + sum;
     }, 0);
 };
 
+const data = fs.readFileSync(file).toString().split('\n\n');
+
 console.log(anySum(data));
-console.log(allSum(data))
+console.log(allSum(data));
