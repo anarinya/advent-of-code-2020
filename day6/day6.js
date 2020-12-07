@@ -29,4 +29,4 @@ const allSum = (data) => {
 const data = fs.readFileSync(file).toString().split('\n\n');
 
 console.log(anySum(data));
-console.log(allSum(data)); // 3445
+console.log(allSum(data));
