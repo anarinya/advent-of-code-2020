@@ -16,8 +16,7 @@ const allSum = (data) => {
     .map(group => group.split('\n'))
     .reduce((acc, group) => {
       const counts = group.join('').split('').reduce((acc, chr) => {
-        acc[chr] ? acc[chr]++ : acc[chr] = 1;
-        return acc;
+        return (acc[chr] ? acc[chr]++ : acc[chr] = 1), acc;
       }, {});
 
       const sum = Object.keys(counts)
@@ -30,4 +29,4 @@ const allSum = (data) => {
 const data = fs.readFileSync(file).toString().split('\n\n');
 
 console.log(anySum(data));
-console.log(allSum(data));
+console.log(allSum(data)); // 3445
